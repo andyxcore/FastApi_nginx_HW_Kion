@@ -1,0 +1,18 @@
+version: "3"
+services:
+  app:
+    build: ./app
+#    command: source ./venv/bin/activate && python3 app.py --reload --host 0.0.0.0 --port 8000
+    ports:
+      - 8001:8000
+    deploy:
+      mode: replicated
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+        order: start-first
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:8080"
