@@ -4,5 +4,5 @@ COPY ./requirements.txt /requirements.txt
 WORKDIR /
 RUN pip install -r requirements.txt
 COPY . /
-ENTRYPOINT [ "python3" ]
-CMD [ "app1.py" ]
+#ENTRYPOINT [ "python3" ]
+CMD ["uvicorn", "app:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8000"]
