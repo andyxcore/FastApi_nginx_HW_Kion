@@ -14,4 +14,6 @@ async def root():
 async def root():
     return {"counter": counter}
 
+def fake_funk():
+    pass
 
